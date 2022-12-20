@@ -1,0 +1,1 @@
+grant access to apache (chown -R www-data:www-data *)
