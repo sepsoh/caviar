@@ -17,3 +17,8 @@ Route::get('/', function () {
 
    return view('welcome');
 });
+Route::get('/{info}', function ($info) {
+
+   return 'query : '. $info;
+});
+
