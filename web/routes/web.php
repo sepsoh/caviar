@@ -33,3 +33,7 @@ Route::post('/login', function () {
 
     return "logged in";
 });
+
+Route::get('/test',function (){
+   dd($this);
+});
