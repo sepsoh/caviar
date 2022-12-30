@@ -1,4 +1,13 @@
 <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+        <a class="nav-link
+            @if(\Illuminate\Support\Facades\Request::path()!='/')
+                collapsed
+            @endif" href="/">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+    </li><!-- End Home Page Nav -->
 
         <li class="nav-item">
             <a class="nav-link
@@ -29,15 +38,5 @@
                 <span>Contact</span>
             </a>
         </li><!-- End Contact Page Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link
-            @if(\Illuminate\Support\Facades\Request::path()!='/')
-                collapsed
-            @endif" href="/">
-                <i class="bi bi-file-earmark"></i>
-                <span>Home</span>
-            </a>
-        </li><!-- End Blank Page Nav -->
     </ul>
 
