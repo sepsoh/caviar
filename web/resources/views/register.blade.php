@@ -1,4 +1,8 @@
 @extends('layouts.master')
+@section('title','Register An Account')
+@section('sidebar')
+    @include('include.sidebar')
+@endsection
 @section('section')
     <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
@@ -7,8 +11,7 @@
 
                     <div class="d-flex justify-content-center py-4">
                         <a href="index.html" class="logo d-flex align-items-center w-auto">
-                            <img src="assets/img/logo.png" alt="">
-                            <span class="d-none d-lg-block">NiceAdmin</span>
+                           @include('include.logo')
                         </a>
                     </div><!-- End Logo -->
 
