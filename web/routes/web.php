@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,23 +20,12 @@ Route::get('/', function () {
 
    return view('home');
 });
-Route::get('/login', function () {
 
-    return view('login');
-});
-Route::get('/register', function () {
 
-    return view('register');
-});
-Route::post('/register', function () {
 
-    return "registered";
-});
-Route::post('/login', function () {
 
-    return "logged in";
-});
+Route::get('/login', [AuthController::class,'login']);
+Route::get('/register', [AuthController::class , 'register']);
 
-Route::get('/test',function (){
-   dd($this);
-});
+Route::post('/register',[AuthController::class , 'registerPost'] );
+Route::post('/login' ,[AuthController::class , 'loginPost']);
