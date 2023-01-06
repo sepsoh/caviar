@@ -16,6 +16,8 @@ const UserDB = require('./userDBClass/userDB.js');
 const userDB = new UserDB();
 
 
+
+
 app.use(express.json());
 //this api return us true whene our cpu and memory usage is smaller than 90% and also sent this two value 
 app.get('/api/getStatus',(req,res) => {
@@ -82,29 +84,57 @@ app.post('/api/raw/getStockInfo',(req,res) => {
         }); 
     }
 });
+//post method to check if we had already input email in database or dont
 app.post('/api/user/emailCheck' , (req,res) => {
     let email = req.body.email;
+    //use checkUserName method from User class in userDB program
     userDB.checkUserName(email,  (result) => {
+        //set status and message for input email after check that
         let response = {
             status: result.status,
             message: result.message
         };
-        //console.log(result);
+        //send the respons value as json with statusId
         res.status(result.statusId).send(JSON.stringify(response));
     });
 });
+//post method to check login with input email and password
 app.post('/api/user/login' , (req,res) => {
     let email = req.body.email;
     let password = req.body.password;
+    //use login methid from User class in userDB program 
     userDB.login(email , password , (result) => {
+        //create object as response value with status true or false , message and userInformation object
         let response = { 
             status: result.status,
             message: result.message,
             userInformation: result.userInformation
         };
+        //send respons value as JSON with status id
         res.status(result.statusId).send(JSON.stringify(response));
     });
 });
+//put method to signup user with the information email password name and date
+app.put('/api/user/signup' , (req,res) => {
+    //create object for userInformation with request body values 
+    let userInformation = {
+        email : req.body.email,
+        password : req.body.password,
+        name: req.body.name,
+        date : req.body.date
+    };
+    //use signup method from User class in userDB program
+    userDB.signup(userInformation, (result) => {
+        //create objet respons value with status and mesaage which can show our signup was successfull or not
+        let response = {
+            status: result.status,
+            message: result.message
+        };
+        //send our respons object as JSON with status id
+        res.status(result.statusId).send(JSON.stringify(response));
+    });
+});
+
 //app will be lister for request on port 8080 localhost
 app.listen(8080, () =>{
     console.log('listening on port 8080');
