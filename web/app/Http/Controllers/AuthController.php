@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class AuthController extends Controller
 {
-    public function login(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function login(): Factory|View|Application
     {
         return view('login');
     }
-
-    public function register(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function register(): Factory|View|Application
     {
         return view('register');
 
     }
+    public function registerPost()
+    {
 
+    }
+    public function loginPost()
+    {
+
+    }
 }
