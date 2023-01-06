@@ -29,11 +29,3 @@ Route::get('/register', [AuthController::class , 'register']);
 
 Route::post('/register',[AuthController::class , 'registerPost'] );
 Route::post('/login' ,[AuthController::class , 'loginPost']);
-
-
-
-
-
-Route::get('/serve',function () {
-    dd($_SERVER);
-});
