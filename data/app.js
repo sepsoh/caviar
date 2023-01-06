@@ -10,7 +10,10 @@ const cpuParameter = require('./cpuParameter/cpuAverage');
 
 //Stock is class which have a lots of function that can connect to our data bases and return the value that we want so it makes our code much cleaner
 const Stock = require('./stockClass/stock.js');
-let stock = new Stock();
+const stock = new Stock();
+
+const UserDB = require('./userDBClass/userDB.js');
+const userDB = new UserDB();
 
 
 app.use(express.json());
@@ -78,9 +81,31 @@ app.post('/api/raw/getStockInfo',(req,res) => {
             }
         }); 
     }
- 
-//app will be lister for request on port 8080 localhost
 });
+app.post('/api/user/emailCheck' , (req,res) => {
+    let email = req.body.email;
+    userDB.checkUserName(email,  (result) => {
+        let response = {
+            status: result.status,
+            message: result.message
+        };
+        //console.log(result);
+        res.status(result.statusId).send(JSON.stringify(response));
+    });
+});
+app.post('/api/user/login' , (req,res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+    userDB.login(email , password , (result) => {
+        let response = { 
+            status: result.status,
+            message: result.message,
+            userInformation: result.userInformation
+        };
+        res.status(result.statusId).send(JSON.stringify(response));
+    });
+});
+//app will be lister for request on port 8080 localhost
 app.listen(8080, () =>{
     console.log('listening on port 8080');
 });
