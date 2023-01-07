@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv": "^6.2.5",
     "npm": "^9.2.0",
     "os-util": "^1.0.2",
-    "os-utils": "^0.0.14"
+    "os-utils": "^0.0.14",
+    "sqlite3": "^5.1.4"
   }
 }

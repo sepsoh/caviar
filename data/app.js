@@ -138,6 +138,4 @@ app.put('/api/user/signup' , (req,res) => {
 //app will be lister for request on port 8080 localhost
 app.listen(8080, () =>{
     console.log('listening on port 8080');
-});
-
- 
+}); 
