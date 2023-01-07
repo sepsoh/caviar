@@ -135,7 +135,9 @@ app.put('/api/user/signup' , (req,res) => {
     });
 });
 
+const post = process.env.PORT || 8080;
 //app will be lister for request on port 8080 localhost
-app.listen(8080, () =>{
-    console.log('listening on port 8080');
+//let port = 8080;
+app.listen(port, () =>{
+    console.log(`listening on port ${port}`);
 }); 
