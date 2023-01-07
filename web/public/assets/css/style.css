@@ -370,13 +370,27 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
+
+
+.header-item {
+    width: 40px;
+}
+
+@media (min-width: 1200px) {
+    .header-item {
+        width: 50px;
+    }
+}
+
+
 .logo {
   line-height: 1;
 }
 
 @media (min-width: 1200px) {
   .logo {
-    width: 280px;
+    width: 200px;
   }
 }
 
@@ -413,6 +427,7 @@ h6 {
 .header .search-bar {
   min-width: 360px;
   padding: 0 20px;
+
 }
 
 @media (max-width: 1199px) {
@@ -433,7 +448,8 @@ h6 {
   .header .search-bar-show {
     top: 60px;
     visibility: visible;
-    opacity: 1;
+    opacity: 0.8;
+    width: 80%;
   }
 }
 
