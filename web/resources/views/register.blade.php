@@ -1,16 +1,16 @@
-@extends('layouts.master')
+@extends('layouts.entry')
+
 @section('title','Register An Account')
-@section('sidebar')
-    @include('include.sidebar')
-@endsection
-@section('section')
-    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+
+@section('main')
+    <main>
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                     <div class="d-flex justify-content-center py-4">
-                        <a href="index.html" class="logo d-flex align-items-center w-auto">
+                        <a href="/" class="logo d-flex align-items-center w-auto">
                            @include('include.logo')
                         </a>
                     </div><!-- End Logo -->
@@ -112,4 +112,5 @@
         </div>
 
     </section>
+    </main>
 @endsection
