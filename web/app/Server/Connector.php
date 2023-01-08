@@ -5,29 +5,25 @@ namespace App\Server;
 use Illuminate\Support\Facades\Http;
 use function Symfony\Component\Translation\t;
 
+
 class Connector
 {
-    private  $address ;
 
+    public static function exec(string $method,array $data) : object {
 
-    public function __construct()
-    {
-        $this->address = env('SERVER_ADDRESS');
+        $response = Http::post( env('SERVER_ADDRESS').'/api/'.$method, $data);
 
+        return $response->object();
     }
-    public function isConnected(): bool
+
+    public static function isConnected(): bool
     {
         try {
-            $response = $this->exec('getStatus',[]);
+            $response = self::exec('getStatus',[]);
             if($response->result)
                 return true;
         }catch (\Exception $e){}
 
         return false;
-    }
-
-    public function exec(string $method,array $data) : object {
-        $response = Http::post($this->address.'/api/'.$method, $data);
-        return $response->object();
     }
 }

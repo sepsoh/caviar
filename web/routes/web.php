@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Client\ConnectionException;
-use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-   return view('home');
-});
 
 
+# Home Controller
+Route::get('/', [HomeController::class,'root']);
+Route::get('/search',[HomeController::class,'search']);
+
+# End Home Controller
 
 
+# Auth Controller
 Route::get('/login', [AuthController::class,'login']);
 Route::get('/register', [AuthController::class , 'register']);
 
 Route::post('/register',[AuthController::class , 'registerPost'] );
 Route::post('/login' ,[AuthController::class , 'loginPost']);
+
+# End Auth Controller
