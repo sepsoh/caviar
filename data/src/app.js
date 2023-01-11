@@ -5,6 +5,7 @@ const mysql = require('mysql');
 
 const os = require('os');
 
+const process = require('process');
 //cpuParameter is a program which calculate the cpu Usage and return it to us
 const cpuParameter = require('./cpuParameter/cpuAverage');
 
@@ -135,7 +136,7 @@ app.put('/api/user/signup' , (req,res) => {
     });
 });
 
-const post = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 //app will be lister for request on port 8080 localhost
 //let port = 8080;
 app.listen(port, () =>{
