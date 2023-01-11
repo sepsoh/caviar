@@ -1,18 +1,27 @@
 const mysql = require('mysql');
 
 module.exports =  class Stocks {
-
+    setDBInfo (){
+        this.DB = {
+            host: "localhost",
+            user: "root",
+            password: "ensALI!)(PASS82",
+            database: "User"
+        };
+    }
+   
     seeAllInformationOfStockWithDateLimit( information , result ) {
 
 
         let query = `select * from ${information.stockName} where date >= 
                                     '${String(information.startDate)}' and date <= 
                                     '${String(information.finishDate)}';`;
+        this.setDBInfo();
         let connection = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "ensALI!)(PASS82",
-            database: "khepri_db"
+            host: this.DB.host,
+            user: this.DB.user,
+            password: this.DB.password,
+            database: this.DB.database
           });
         
         connection.connect(  ( err )=> {

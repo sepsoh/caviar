@@ -2,15 +2,23 @@ const mySql = require('mysql');
 
 //export user class as module 
 module.exports = class User{
-
-    //sign up method which add the information to user information table in User database
-    signup(information,result){
-        //create connection with our database
-        let connection = mySql.createConnection({
+    setDBInfo (){
+        this.DB = {
             host: "localhost",
             user: "root",
             password: "ensALI!)(PASS82",
             database: "User"
+        };
+    }
+    //sign up method which add the information to user information table in User database
+    signup(information,result){
+        //create connection with our database
+        this.setDBInfo();
+        let connection = mySql.createConnection({
+            host: this.DB.host,
+            user: this.DB.user,
+            password: this.DB.password,
+            database: this.DB.database
         });
         //connect to our database
         connection.connect( (err) => {
@@ -58,11 +66,12 @@ module.exports = class User{
     //login with input email and password and return true if they were in our database
     login(email,password,result){
         //create connection with our database
+        this.setDBInfo();
         let connection = mySql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "ensALI!)(PASS82",
-            database: "User"
+            host: this.DB.host,
+            user: this.DB.user,
+            password: this.DB.password,
+            database: this.DB.database
         });
         
         //connect to our database
@@ -124,12 +133,13 @@ module.exports = class User{
     //check if we already had the inpuy username in our database or not 
     checkUserName(email,result){
         //create connection to our database
+        this.setDBInfo();
         let connection = mySql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "ensALI!)(PASS82",
-            database: "User"
-        });
+            host: this.DB.host,
+            user: this.DB.user,
+            password: this.DB.password,
+            database: this.DB.database
+        });       
         //connect to our database
         connection.connect( (err) => {
             //query to search for input username in our database
