@@ -5,6 +5,7 @@ const mysql = require('mysql');
 
 const os = require('os');
 
+const process = require('process');
 //cpuParameter is a program which calculate the cpu Usage and return it to us
 const cpuParameter = require('./cpuParameter/cpuAverage');
 
@@ -15,6 +16,7 @@ const stock = new Stock();
 const UserDB = require('./userDBClass/userDB.js');
 const userDB = new UserDB();
 
+const readSCV = require('./stockInformation/readCSV.js');
 
 
 
@@ -84,6 +86,33 @@ app.post('/api/raw/getStockInfo',(req,res) => {
         }); 
     }
 });
+//search for stock information
+app.post('/api/raw/search' , (req , res) => {
+    let searchString = req.body.searchString;
+    readSCV( (stockInformation) => {
+        let returnValue = [];
+        
+        for (let stock of stockInformation){
+                      
+            if(String(stock.symbol).search(searchString) != -1 || String(stock.name).search(searchString) != -1){
+                returnValue.push(stock);    
+            }
+        }
+        if(returnValue.length == 0){
+            let respons = {
+                status : false,
+                message : `cant find stock`
+            };
+            res.status(400).send(JSON.stringify(respons));
+        }else{
+            let respons = {
+                status : true,
+                result : returnValue
+            };
+            res.status(200).send(JSON.stringify(respons));
+        }
+    });
+});
 //post method to check if we had already input email in database or dont
 app.post('/api/user/emailCheck' , (req,res) => {
     let email = req.body.email;
@@ -135,7 +164,7 @@ app.put('/api/user/signup' , (req,res) => {
     });
 });
 
-const post = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 //app will be lister for request on port 8080 localhost
 //let port = 8080;
 app.listen(port, () =>{
