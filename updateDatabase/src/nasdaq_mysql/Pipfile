@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+scrapy = "*"
+selenium = "*"
+flake8 = "*"
+twisted = "*"
+loguru = "*"
+schedule = "*"
+pytest-shutil = "*"
+subprocess-run = "*"
+
+[requires]
+python_version = "3.6"
