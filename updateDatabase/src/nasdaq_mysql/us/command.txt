@@ -1,0 +1,1 @@
+scrapy crawl stocks -a stocks_list="aapl,amzn" -a start_date=2017-01-01
