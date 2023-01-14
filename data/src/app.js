@@ -47,7 +47,7 @@ app.get('/api/getStatus',(req,res) => {
 });
 
 //creating api to get information of stocks between two date
-app.post('/api/raw/getStockInfo',(req,res) => {
+app.post('/api/raw/getStockData',(req,res) => {
     //in request body we get three argument name of stock , start Date , finish Date 
     if(!req.body.name && !req.body.startDate && !req.body.finishDate){
         //wrong input request
@@ -91,13 +91,15 @@ app.post('/api/raw/search' , (req , res) => {
     let searchString = req.body.searchString;
     readSCV( (stockInformation) => {
         let returnValue = [];
-        
+        //search in all stocks array
         for (let stock of stockInformation){
-                      
+            //if stock name or symbol has the input string
             if(String(stock.symbol).search(searchString) != -1 || String(stock.name).search(searchString) != -1){
+                //add stock info to return value arraye which means that it have the input string
                 returnValue.push(stock);    
             }
         }
+        //if return value array lengh is 0 shows that we couldnt finde the input string
         if(returnValue.length == 0){
             let respons = {
                 status : false,
@@ -111,6 +113,17 @@ app.post('/api/raw/search' , (req , res) => {
             };
             res.status(200).send(JSON.stringify(respons));
         }
+    });
+});
+//return all stock information
+app.get('/api/raw/allStockInformation' , (req,res) => {
+    //read from csv file
+    readSCV( (stockInformation) => {
+        let respons = {
+            status : true,
+            result : stockInformation
+        };
+        res.status(200).send(JSON.stringify(respons));
     });
 });
 //post method to check if we had already input email in database or dont
