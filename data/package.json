@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-navigation/stack": "^6.3.12",
+    "cors": "^2.8.5",
     "csv": "^6.2.5",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20",

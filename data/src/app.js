@@ -18,7 +18,10 @@ const userDB = new UserDB();
 
 const readSCV = require('./stockInformation/readCSV.js');
 
-
+const cors = require('cors');
+app.use(cors({
+    origin: ['http://localhost:19006']
+}));
 
 app.use(express.json());
 //this api return us true whene our cpu and memory usage is smaller than 90% and also sent this two value 
