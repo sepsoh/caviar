@@ -26,4 +26,9 @@ class Connector
 
         return false;
     }
+
+    public static function method(){
+        return new DataMock;
+    }
+
 }
