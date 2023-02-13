@@ -36,8 +36,10 @@ Route::post('/login' ,[AuthController::class , 'loginPost']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/panel', function () {
-        dd("this is panel");
+            return view('panel');
         }
     )->name('panel');
+
+    Route::get('/logout', [AuthController::class , 'logout'])->name('panel');
 
 });
