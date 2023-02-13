@@ -27,11 +27,19 @@
                     </div>
                     @endif
                     {{--End Successfully registered--}}
-
-
+                    {{--Error Messages--}}
+                    @if(count($errors->all())>0)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h4 class="alert-heading">Login Failed</h4>
+                            @foreach($errors->all() as $error)
+                                <p>{{$error}}</p>
+                            @endforeach
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    {{--End Error Messages --}}
 
                     <div class="card mb-3">
-
                             <div class="card-body">
 
                             <div class="pt-4 pb-2">
@@ -39,7 +47,7 @@
                                 <p class="text-center small">Enter your username & password to login</p>
                             </div>
 
-                            <form class="row g-3 needs-validation" novalidate method="post" action="/login">
+                            <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('login') }}">
                                 @csrf
                                 <div class="col-12">
                                     <label for="email" class="form-label">Your Email</label>
