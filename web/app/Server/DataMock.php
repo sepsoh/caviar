@@ -18,34 +18,59 @@ class DataMock
     }
     public function raw_allStockInformation(){
         return [
-            // list of 100 random stocks
             [
                 'symbol'=>'ABC',
-                'name'=>'AmerisourceBergen Corporation'
+                'name'=>'AmerisourceBergen Corporation',
+                'price'=>15,
+                'status'=>'open'
             ],
             [
                 'symbol'=>'ABCB',
-                'name'=>'Ameris Bancorp'
+                'name'=>'Ameris Bancorp',
+                'price'=>39.1,
+                'status'=>'open'
+
+
             ],
             [
                 'symbol'=>'ABM',
-                'name'=>'ABM Industries Incorporated'
+                'name'=>'ABM Industries Incorporated',
+                'price'=>88,
+                'status'=>'open'
+
+
             ],
             [
                 'symbol'=>'KAL',
-                'name'=>'Kalera Public Limited Company'
+                'name'=>'Kalera Public Limited Company',
+                'price'=>18,
+                'status'=>'close'
+
+
             ],
             [
                 'symbol'=>'ML',
-                'name'=>'MoneyLion Inc.'
+                'name'=>'MoneyLion Inc.',
+                'price'=>44.2,
+                'status'=>'open'
+
+
             ],
             [
                 'symbol'=>'MLAB',
-                'name'=>'Mesa Laboratories, Inc.'
+                'name'=>'Mesa Laboratories, Inc.',
+                'price'=>1.256,
+                'status'=>'close'
+
+
             ],
             [
                 'symbol'=>'OMI',
-                'name'=>'Owens & Minor, Inc.'
+                'name'=>'Owens & Minor, Inc.',
+                'price'=>36.2,
+                'status'=>'open'
+
+
             ],
         ];
     }
