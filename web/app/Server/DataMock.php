@@ -157,5 +157,41 @@ class DataMock
         ];
     }
 
+    public function getUserData(){
+        return [
+            'revenue'=>rand(10000,50000)/10.00,
+            'revenue_percent'=>rand(1,50)/10.00,
+            'update_at'=>date("D, d M Y H:i:s"),
+            'stock_percent_data'=>"{
+                                                    value: 1048,
+                                                    name: 'ABM'
+                                                },
+                                                    {
+                                                        value: 735,
+                                                        name: 'KAL'
+                                                    },
+                                                    {
+                                                        value: 580,
+                                                        name: 'ML'
+                                                    },
+                                                    {
+                                                        value: 484,
+                                                        name: 'ABC'
+                                                    },
+                                                    {
+                                                        value: 300,
+                                                        name: 'MLAB'
+                                                    },
+                                                    {
+                                                        value: 300,
+                                                        name: 'OMI'
+                                                    },
+                                                ]
+                                            }",
+
+
+        ];
+    }
+
 
 }
