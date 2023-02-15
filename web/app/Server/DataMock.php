@@ -159,6 +159,8 @@ class DataMock
 
     public function getUserData(){
         return [
+            'name'=>'MohammadReza Karimi',
+            'email'=>'mohammadrzkarimi@yahoo.com',
             'revenue'=>rand(10000,50000)/10.00,
             'revenue_percent'=>rand(1,50)/10.00,
             'update_at'=>date("D, d M Y H:i:s"),
