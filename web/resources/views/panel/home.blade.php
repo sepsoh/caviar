@@ -71,7 +71,26 @@
                 <div class="col-lg-8">
                     <div class="row">
 
+                        <!-- User info Card -->
+                        <div class="col-12">
+                            <div class="card info-card revenue-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Info</h5>
 
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-person-circle"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>{{\App\Server\Connector::method()->getUserData()['name']}}</h6>
+                                           <span class="text-muted small pt-2 ps-1">{{\App\Server\Connector::method()->getUserData()['email']}}</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End User info Card -->
                         <!-- Revenue Card -->
                         <div class="col-12">
                             <div class="card info-card revenue-card">
