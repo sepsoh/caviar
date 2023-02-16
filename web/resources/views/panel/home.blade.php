@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Home')
+@section('title', 'Panel')
 
 @section('header')
     @include('include.header')
@@ -8,62 +8,6 @@
 
 @section('main')
     <main id="main" class="main">
-        <section class="section">
-            @if(!empty($query))
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Search Results :
-                    </h5>
-                    <!-- List group with custom content -->
-                    <div class="list-group">
-                        <a href="#" class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">{{$query}}
-                                    <span class="badge bg-primary rounded-pill ">FAKE RESULT</span>
-                                </div>
-
-                                {{--
-                                                        <span class="badge bg-black rounded-pill ">Price 0</span>
-                                --}}
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-
-                                <div class="fw-bold">
-                                    Apple Corporation
-                                    <span class="badge bg-primary rounded-pill ">APPL</span>
-                                </div>
-
-                                {{--
-                                                        <span class="badge bg-black rounded-pill ">Price $3658</span>
-                                --}}
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">Nokia Technologies
-                                    <span class="badge bg-primary rounded-pill ">NKA</span>
-                                </div>
-                                {{--
-                                                        <span class="badge bg-black rounded-pill ">Price $308</span>
-                                --}}
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">NVIDA Lab
-                                    <span class="badge bg-primary rounded-pill ">NVDA</span>
-                                </div>
-                                {{--
-                                                        <span class="badge bg-black rounded-pill ">Price $55</span>
-                                --}}
-                            </div>
-                        </a>
-                    </div><!-- End with custom content -->
-                </div>
-            @endif
-        </section>
         <section class="section dashboard">
             <div class="row">
 
@@ -270,6 +214,43 @@
 
             </div>
         </section>
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Your Strategis</h5>
+                            @foreach(\App\Server\Connector::method()->getUserStrategies('') as $item)
+                                <div class="col-auto">
+                                    <div class="card info-card revenue-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Strategy</h5>
 
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-gear-wide-connected"></i>
+                                                </div>
+                                                <div class="ps-3">
+                                                    <h6><a href="/pay/{{$item['id']}}">{{$item['name']}}</a></h6>
+                                                    <span class="text-muted small pt-2 ps-1">
+                                                    {{$item['description']}}
+                                                    <hr>
+                                                    Price per month :
+                                                </span>
+                                                    <span class="text-success small pt-1 fw-bold">${{$item['price']}}</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 @endsection
