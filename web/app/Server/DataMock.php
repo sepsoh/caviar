@@ -11,7 +11,7 @@ class DataMock
     public function getStatus(){
         return [
             'result'=>true,
-            'cpuUsage'=>90,
+            'cpuUsage'=>50,
             'memoryUsage'=>77.5
 
         ];
@@ -221,6 +221,17 @@ class DataMock
 
 
         ];
+    }
+    public function getUserStrategies($email){
+        return [
+            [
+                'id'=>'1',
+                'name'=>'King of Money',
+                'price'=>'15',
+                'description'=>'this is example strategy number 1',
+
+            ]
+            ];
     }
 
 
