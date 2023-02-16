@@ -11,7 +11,7 @@ class DataMock
     public function getStatus(){
         return [
             'result'=>true,
-            'cpuUsage'=>40,
+            'cpuUsage'=>90,
             'memoryUsage'=>77.5
 
         ];
@@ -190,6 +190,34 @@ class DataMock
                                                     },
                                                 ]
                                             }",
+
+
+        ];
+    }
+    public function getAllStrategies(){
+        return [
+          [
+              'id'=>'1',
+              'name'=>'King of Money',
+              'price'=>'15',
+              'description'=>'this is example strategy number 1',
+
+          ],
+            [
+                'id'=>'2',
+                'name'=>'Strategy 2',
+                'price'=>'2.35',
+                'description'=>'this is example strategy number 1',
+
+            ],
+            [
+                'id'=>'3',
+                'name'=>'Strategy 3',
+                'price'=>'3.99',
+                'description'=>'this is example strategy number 1',
+
+            ],
+
 
 
         ];

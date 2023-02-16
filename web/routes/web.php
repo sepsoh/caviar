@@ -36,10 +36,19 @@ Route::post('/login' ,[AuthController::class , 'loginPost']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/panel', function () {
-            return view('panel');
+            return view('panel.home');
         }
     )->name('panel');
 
     Route::get('/logout', [AuthController::class , 'logout'])->name('panel');
+    Route::get('/item/{item}', function ($item){
+        return view('panel.item',['item'=>$item]);
+    })->name('item');
+    Route::get('/store', function (){
+        return view('panel.store');
+    })->name('store');
+    Route::get('/pay/{id}', function ($id){
+        return view('panel.pay',['id'=>$id]);
+    })->name('pay');
 
 });
